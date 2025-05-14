@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "e2200ad9-1a37-4806-abf4-793af3cfdf5d",
+		"name": "Cartona",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13584233"
+	},
+	"item": [
+		{
+			"name": "Create Sale Order",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customer\": 3,\r\n  \"reference\":\"ref_3\",\r\n  \"order_lines\": [\r\n    {\r\n      \"product_id\": 5,\r\n      \"quantity\": 2,\r\n      \"price\": 120.0\r\n    },\r\n    {\r\n      \"product_id\": 7,\r\n      \"quantity\": 1,\r\n      \"price\": 200.0\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8017/api/test/"
+			},
+			"response": [
+				{
+					"name": "Successful Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n  \"reference\": \"ref_3\",\r\n  \"order_lines\": [\r\n    {\r\n      \"product_id\": 1,\r\n      \"quantity\": 2,\r\n      \"price\": 120.0\r\n    },\r\n    {\r\n      \"product_id\": 5,\r\n      \"quantity\": 1,\r\n      \"price\": 200.0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8017/api/create_sale_order"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "204"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.2 Python/3.10.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 22:38:13 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": {\n        \"success\": true,\n        \"sale_order_id\": 21,\n        \"sale_order_name\": \"S00025\",\n        \"sale_order_state\": \"draft\",\n        \"total_amount\": 501.6,\n        \"invoice_id\": 8,\n        \"invoice_state\": \"draft\"\n    }\n}"
+				},
+				{
+					"name": "Customer not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n  \"reference\": \"ref_30\",\r\n  \"order_lines\": [\r\n    {\r\n      \"product_id\": 1,\r\n      \"quantity\": 2,\r\n      \"price\": 120.0\r\n    },\r\n    {\r\n      \"product_id\": 5,\r\n      \"quantity\": 1,\r\n      \"price\": 200.0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8017/api/create_sale_order"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "96"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.2 Python/3.10.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 22:38:54 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": \"400 Bad Request: 400 Bad Request: Customer not found\"\n}"
+				},
+				{
+					"name": "Product Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n  \"reference\": \"ref_3\",\r\n  \"order_lines\": [\r\n    {\r\n      \"product_id\": 1025,\r\n      \"quantity\": 2,\r\n      \"price\": 120.0\r\n    },\r\n    {\r\n      \"product_id\": 5,\r\n      \"quantity\": 1,\r\n      \"price\": 200.0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8017/api/create_sale_order"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "95"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.2 Python/3.10.5"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 22:39:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": \"400 Bad Request: 400 Bad Request: Product not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customer\": 3,\r\n  \"reference\":\"ref_3\",\r\n  \"order_lines\": [\r\n    {\r\n      \"product_id\": 5,\r\n      \"quantity\": 2,\r\n      \"price\": 120.0\r\n    },\r\n    {\r\n      \"product_id\": 7,\r\n      \"quantity\": 1,\r\n      \"price\": 200.0\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8017/api/test/"
+			},
+			"response": []
+		}
+	]
+}
